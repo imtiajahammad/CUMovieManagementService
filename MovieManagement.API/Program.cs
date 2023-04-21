@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using MovieManagement.Domain.Repository;
 using MovieManagement.DataAccess.Implementations;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MovieManagementDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MovieConnection")));
 
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
+
+/*to ignore the reference cycle of EFCore*/
+builder.Services.AddMvc()
+    .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 var app = builder.Build();
 
