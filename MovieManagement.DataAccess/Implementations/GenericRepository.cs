@@ -10,7 +10,7 @@ namespace MovieManagement.DataAccess.Implementations;
 
 public class GenericRepository<T> : IGenericRepository<T> where T : class
 {
-    private readonly MovieManagementDbContext _context;
+    public readonly MovieManagementDbContext _context;
     public GenericRepository(MovieManagementDbContext context)
     {
         _context = context;
