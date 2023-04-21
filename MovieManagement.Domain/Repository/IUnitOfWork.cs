@@ -5,8 +5,8 @@ namespace MovieManagement.Domain.Repository
 	{
 		IActorRepository ActorRepository { get; }
 		IMovieRepository MovieRepository { get; }
-		IGenreRepository GenericRepository { get; }
-		IBiographyRepository BiographyReposioty { get; }
+		IGenreRepository GenreRepository { get; }
+		IBiographyRepository BiographyRepository { get; }
 		int Save();
 	}
 }
