@@ -1,5 +1,7 @@
 ﻿using MovieManagement.DataAccess.Context;
 using Microsoft.EntityFrameworkCore;
+using MovieManagement.Domain.Repository;
+using MovieManagement.DataAccess.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,8 @@ builder.Services.AddSwaggerGen();
 
 // Add Entity Framework
 builder.Services.AddDbContext<MovieManagementDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MovieConnection")));
+
+builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
 
