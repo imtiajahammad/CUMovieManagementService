@@ -5,6 +5,7 @@ namespace MovieManagement.Domain.Repository
 {
 	public interface IActorRepository : IGenericRepository<Actor>
 	{
+		IEnumerable<Actor> GetActorsWithMovies();
 	}
 }
 
